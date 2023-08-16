@@ -1,5 +1,16 @@
 # 251-Assignment1-2023-Dale-Rachel
 
-Dale joined
-Rachel joined
-1
+#### Rachel Bell - 20019755
+#### Dale Geronimo - 22004533
+---
+### Instructions:
+---
+### Significant Commits for each member:
+
+Rachel:
+
+Dale:
+
+---
+
+### Interesting Features:
