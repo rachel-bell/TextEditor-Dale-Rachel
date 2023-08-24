@@ -54,6 +54,12 @@ public class TextEditor {
         // Set the menu bar to the frame
         frame.setJMenuBar(menuBar);
 
+        //Set onClick listener for menu items
+        newMenuItem.addActionListener(evt -> {
+            TextEditor newText = new TextEditor();
+        });
+
+
         // Create a JTextArea where the user can write things
         JTextArea textArea = new JTextArea(10, 40);
         JScrollPane scrollPane = new JScrollPane(textArea);
