@@ -2,6 +2,8 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.*;
+import java.util.Date;
 
 public class TextEditor {
     public TextEditor() {
@@ -12,6 +14,11 @@ public class TextEditor {
         // Create a panel to hold components
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
+
+        // Create a JTextArea where the user can write things
+        JTextArea textArea = new JTextArea(10, 40);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -59,15 +66,16 @@ public class TextEditor {
             TextEditor newText = new TextEditor();
         });
 
+        timeMenuItem.addActionListener(evt -> {
+            SimpleDateFormat formatter = new SimpleDateFormat("hh:mm dd-MM-yyyy");
+            String strDate = formatter.format(new Date());
+            textArea.setText(strDate + "\n");
+        });
+
         aboutMenuItem.addActionListener(evt -> {
             String message = "Rachel Bell - 20019755\nDale Geronimo - 22004533\nThis is our Assignment 1";
             JOptionPane.showMessageDialog(null, message);
         });
-
-        // Create a JTextArea where the user can write things
-        JTextArea textArea = new JTextArea(10, 40);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        panel.add(scrollPane, BorderLayout.CENTER);
 
         // Add the panel to the frame
         frame.getContentPane().add(panel);
