@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10c5e351-a7fa-4b70-ad66-0bc14c97e9c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/251-Assignment1-2023-Dale-Rachel.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rachel_Bell-20019755-Dale_Geronimo-22004533/Assignment1_159251_2023/src/main/java/org/example/TextEditor.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2UV7OxsggTuHZUzDJLkD36zPwnd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "22-fix-file-structure",
+    "last_opened_file_path": "/Users/rachelbell/Documents/GitHub/251-Assignment1-2023-Dale-Rachel"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="Assignment1_159251_2023" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="251-Assignment1-2023-Dale-Rachel" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="251-Assignment1-2023-Dale-Rachel" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10c5e351-a7fa-4b70-ad66-0bc14c97e9c7" name="Changes" comment="" />
+      <created>1693012865361</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693012865361</updated>
+    </task>
+    <servers />
+  </component>
+</project>
