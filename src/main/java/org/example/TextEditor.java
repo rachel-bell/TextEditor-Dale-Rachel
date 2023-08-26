@@ -6,6 +6,7 @@ import java.text.*;
 import java.util.Date;
 
 public class TextEditor {
+    private String copiedText;
     public TextEditor() {
         JFrame frame = new JFrame("Text Editor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,12 +67,32 @@ public class TextEditor {
             TextEditor newText = new TextEditor();
         });
 
+        //functions for copy, cut and paste
+        copyMenuItem.addActionListener(evt -> {
+            copiedText = textArea.getSelectedText();
+        });
+
+        cutMenuItem.addActionListener(evt -> {
+            copiedText = textArea.getSelectedText();
+            textArea.replaceSelection("");
+        });
+
+        pasteMenuItem.addActionListener(evt -> {
+            if (copiedText != null) {
+                int caretPosition = textArea.getCaretPosition();
+                textArea.insert(copiedText, caretPosition);
+            }
+        });
+
+
+        //function to display the current time and date at the top of the text area
         timeMenuItem.addActionListener(evt -> {
             SimpleDateFormat formatter = new SimpleDateFormat("hh:mm dd-MM-yyyy");
             String strDate = formatter.format(new Date());
             textArea.setText(strDate + "\n");
         });
 
+        //function to display the developers names and a little message in a pop-up box
         aboutMenuItem.addActionListener(evt -> {
             String message = "Rachel Bell - 20019755\nDale Geronimo - 22004533\nThis is our Assignment 1";
             JOptionPane.showMessageDialog(null, message);
