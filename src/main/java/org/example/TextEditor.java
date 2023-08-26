@@ -59,6 +59,10 @@ public class TextEditor {
             TextEditor newText = new TextEditor();
         });
 
+        aboutMenuItem.addActionListener(evt -> {
+            String message = "Rachel Bell - 20019755\nDale Geronimo - 22004533\nThis is our Assignment 1";
+            JOptionPane.showMessageDialog(null, message);
+        });
 
         // Create a JTextArea where the user can write things
         JTextArea textArea = new JTextArea(10, 40);
