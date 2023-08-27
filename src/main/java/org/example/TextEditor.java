@@ -6,6 +6,7 @@ import java.awt.*;
 import java.io.*;
 import java.text.*;
 import java.util.Date;
+import java.util.Scanner;
 
 import static java.lang.System.in;
 
@@ -86,7 +87,7 @@ public class TextEditor extends Component {
                     String str;
                     textArea.setText("");
                     while ((str = buff.readLine()) != null) {
-                        textArea.append("\n"+str);
+                        textArea.append(str + "\n");
                     }
                 } catch (IOException e) {
                 } finally {
@@ -94,6 +95,25 @@ public class TextEditor extends Component {
                 }
             }
 
+        });
+
+        saveMenuItem.addActionListener(evt -> {
+            JFileChooser fileChooser = new JFileChooser();
+            int retVal = fileChooser.showSaveDialog(frame);
+            if (retVal == JFileChooser.APPROVE_OPTION) {
+                // Create a bufferedwriter with the specified file
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile()))) {
+                    // Write the content to the file
+                    Scanner scanner = new Scanner(textArea.getText());
+                    while (scanner.hasNextLine()) {
+                        String line = scanner.nextLine();
+                        writer.write(line + "\n");
+                    }
+                    scanner.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
         });
 
         //functions for copy, cut and paste
