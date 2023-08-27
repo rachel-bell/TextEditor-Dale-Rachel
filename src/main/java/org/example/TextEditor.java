@@ -7,6 +7,10 @@ import java.io.*;
 import java.text.*;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+
 
 import static java.lang.System.in;
 
@@ -97,6 +101,7 @@ public class TextEditor extends Component {
 
         });
 
+
         saveMenuItem.addActionListener(evt -> {
             JFileChooser fileChooser = new JFileChooser();
             int retVal = fileChooser.showSaveDialog(frame);
@@ -112,6 +117,40 @@ public class TextEditor extends Component {
                     scanner.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                          }
+            }
+        });
+
+        //function to search for a specific word
+        searchMenuItem.addActionListener(evt -> {
+            String[] options = {"Search", "Remove Highlights"};
+            String choice = (String) JOptionPane.showInputDialog(null, "Choose an option:", "Search and Highlight", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+            Highlighter highlighter = textArea.getHighlighter();
+
+            if (choice != null) {
+                if (choice.equals("Search")) {
+                    String message = "Enter word you want to search:";
+                    String searchWord = JOptionPane.showInputDialog(null, message);
+
+                    String content = textArea.getText();
+                    highlighter.removeAllHighlights();
+
+                    if (searchWord != null && !searchWord.isEmpty()) {
+                        int i = 0;
+                        while ((i = content.toLowerCase().indexOf(searchWord.toLowerCase(), i)) >= 0) {
+                            int totalLength = i + searchWord.length();
+                            try {
+                                highlighter.addHighlight(i, totalLength, DefaultHighlighter.DefaultPainter);
+                            } catch (BadLocationException e) {
+                                e.printStackTrace();
+                            }
+                            i = totalLength;
+                        }
+                    }
+                } else if (choice.equals("Remove Highlights")) {
+                    highlighter.removeAllHighlights();
+
                 }
             }
         });
