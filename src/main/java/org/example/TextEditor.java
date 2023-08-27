@@ -1,11 +1,15 @@
 package org.example;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.io.*;
 import java.text.*;
 import java.util.Date;
 
-public class TextEditor {
+import static java.lang.System.in;
+
+public class TextEditor extends Component {
     private String copiedText;
     public TextEditor() {
         JFrame frame = new JFrame("Text Editor");
@@ -62,9 +66,34 @@ public class TextEditor {
         // Set the menu bar to the frame
         frame.setJMenuBar(menuBar);
 
-        //Set onClick listener for menu items
+        //Set onClick listener for File menu items
         newMenuItem.addActionListener(evt -> {
             TextEditor newText = new TextEditor();
+        });
+
+        openMenuItem.addActionListener(evt -> {
+            //Create file chooser with and only allow users to open .txt files
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files and OpenDocument Text Files", "txt", "odt"));
+            int result = fileChooser.showOpenDialog(this);
+            //If you select a valid .txt file then try to open it
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                BufferedReader buff = null;
+                try {
+                    buff = new BufferedReader(new FileReader(selectedFile));
+                    String str;
+                    textArea.setText("");
+                    while ((str = buff.readLine()) != null) {
+                        textArea.append("\n"+str);
+                    }
+                } catch (IOException e) {
+                } finally {
+                    try { in.close(); } catch (Exception ex) { }
+                }
+            }
+
         });
 
         //functions for copy, cut and paste
