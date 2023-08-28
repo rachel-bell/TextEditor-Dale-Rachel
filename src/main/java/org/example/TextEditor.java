@@ -18,7 +18,7 @@ public class TextEditor extends Component {
     private String copiedText;
     public TextEditor() {
         JFrame frame = new JFrame("Text Editor");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 400); // Set the size of the frame
 
         // Create a panel to hold components
@@ -118,6 +118,33 @@ public class TextEditor extends Component {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                           }
+            }
+        });
+
+        exitMenuItem.addActionListener(evt -> {
+            if (!textArea.getText().isEmpty()) {
+                int asking = JOptionPane.showConfirmDialog(this,
+                        "Do you want to save your files before exiting this tab?");
+                if (asking == JOptionPane.YES_OPTION) {
+                    System.out.println("Saving...");
+                } else {
+                    int asking2 = JOptionPane.showConfirmDialog(this, "Are you sure?");
+                    if (asking2 == JOptionPane.YES_OPTION) {
+                        System.exit(0);
+                    }
+                }
+            } else {
+                frame.dispose();
+                int asking = JOptionPane.showConfirmDialog(this,
+                        "Do you want to save your other files before exiting?");
+                if (asking == JOptionPane.YES_OPTION) {
+                    System.out.println("Saving...");
+                } else {
+                    int asking2 = JOptionPane.showConfirmDialog(this, "Are you sure?");
+                    if (asking2 == JOptionPane.YES_OPTION) {
+                        System.exit(0);
+                    }
+                }
             }
         });
 
