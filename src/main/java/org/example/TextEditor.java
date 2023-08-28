@@ -3,6 +3,7 @@ package org.example;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.print.PrinterException;
 import java.io.*;
 import java.text.*;
 import java.util.Date;
@@ -121,6 +122,13 @@ public class TextEditor extends Component {
                     e1.printStackTrace();
                           }
             }
+        });
+
+        printMenuItem.addActionListener(evt -> {
+                    try {
+                        textArea.print();
+                    } catch (PrinterException exc){
+                    }
         });
 
         //function to search for a specific word
