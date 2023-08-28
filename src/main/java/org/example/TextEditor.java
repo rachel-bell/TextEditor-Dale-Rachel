@@ -1,5 +1,8 @@
 package org.example;
 
+import org.odftoolkit.simple.TextDocument;
+import org.odftoolkit.simple.text.Paragraph;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -7,6 +10,7 @@ import java.awt.print.PrinterException;
 import java.io.*;
 import java.text.*;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
@@ -88,17 +92,36 @@ public class TextEditor extends Component {
             //If you select a valid .txt file then try to open it
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                BufferedReader buff = null;
-                try {
-                    buff = new BufferedReader(new FileReader(selectedFile));
-                    String str;
-                    textArea.setText("");
-                    while ((str = buff.readLine()) != null) {
-                        textArea.append(str + "\n");
+                //If the file is a odt file use TextDocument to open it
+                if (selectedFile.getName().contains("odt")) {
+                    try {
+                        TextDocument odtDoc = TextDocument.loadDocument(selectedFile);
+                        StringBuilder content = new StringBuilder();
+                        for (Iterator<Paragraph> it = odtDoc.getParagraphIterator(); it.hasNext(); ) {
+                            Paragraph paragraph = it.next();
+                            content.append(paragraph.getTextContent()).append("\n");
+                        }
+                        textArea.setText(content.toString());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
                     }
-                } catch (IOException e) {
-                } finally {
-                    try { in.close(); } catch (Exception ex) { }
+                //If the file is a txt file use a buffer and fileReader to open it
+                } else {
+                    BufferedReader buff = null;
+                    try {
+                        buff = new BufferedReader(new FileReader(selectedFile));
+                        String str;
+                        textArea.setText("");
+                        while ((str = buff.readLine()) != null) {
+                            textArea.append(str + "\n");
+                        }
+                    } catch (IOException e) {
+                    } finally {
+                        try {
+                            in.close();
+                        } catch (Exception ex) {
+                        }
+                    }
                 }
             }
 
