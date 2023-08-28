@@ -1,23 +1,31 @@
 package org.example;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.odftoolkit.simple.TextDocument;
 import org.odftoolkit.simple.text.Paragraph;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
-import java.awt.print.PrinterException;
-import java.io.*;
-import java.text.*;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Scanner;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
-
+import java.awt.*;
+import java.awt.print.PrinterException;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import static java.lang.System.in;
+import static org.apache.pdfbox.pdmodel.font.PDType1Font.*;
+import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA;
+import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.TIMES_ROMAN;
 
 public class TextEditor extends Component {
     private String copiedText;
@@ -130,17 +138,46 @@ public class TextEditor extends Component {
 
         saveMenuItem.addActionListener(evt -> {
             JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter txtFile = new FileNameExtensionFilter("Text Files (.txt)", "txt");
+            FileNameExtensionFilter pdfFile = new FileNameExtensionFilter("PDF Files (.pdf)","pdf");
+            fileChooser.addChoosableFileFilter(txtFile);
+            fileChooser.addChoosableFileFilter(pdfFile);
+
             int retVal = fileChooser.showSaveDialog(frame);
             if (retVal == JFileChooser.APPROVE_OPTION) {
                 // Create a bufferedwriter with the specified file
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile()))) {
-                    // Write the content to the file
-                    Scanner scanner = new Scanner(textArea.getText());
-                    while (scanner.hasNextLine()) {
-                        String line = scanner.nextLine();
-                        writer.write(line + "\n");
+                    if (fileChooser.getFileFilter().equals(pdfFile)) {
+                        PDDocument doc = new PDDocument();
+                        PDPage page = new PDPage();
+                        doc.addPage(page);
+                        PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+
+                        Scanner scanner = new Scanner(textArea.getText());
+
+                        while (scanner.hasNextLine()) {
+                            String text = scanner.nextLine();
+                            contentStream.beginText();
+                            contentStream.newLine();
+                            //contentStream.setFont(PDType1Font.HELVETICA,16);
+                            contentStream.showText(text);
+                            contentStream.endText();
+                        }
+                        scanner.close();
+                        contentStream.close();
+                        doc.save(new File(fileChooser.getSelectedFile().getAbsolutePath() + ".pdf"));
+                        doc.close();
                     }
-                    scanner.close();
+                    else {
+                        Scanner scanner = new Scanner(textArea.getText());
+                        while (scanner.hasNextLine()) {
+                            String line = scanner.nextLine();
+                            writer.write(line + "\n");
+                        }
+                        scanner.close();
+                    }
+                    // Write the content to the file
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
                           }
