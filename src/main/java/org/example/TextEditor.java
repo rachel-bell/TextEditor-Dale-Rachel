@@ -3,6 +3,7 @@ package org.example;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.print.PrinterException;
 import java.io.*;
 import java.text.*;
 import java.util.Date;
@@ -51,9 +52,11 @@ public class TextEditor extends Component {
         JMenuItem copyMenuItem = new JMenuItem("Copy");
         JMenuItem pasteMenuItem = new JMenuItem("Paste");
         JMenuItem cutMenuItem = new JMenuItem("Cut");
+        JMenuItem selectMenuItem = new JMenuItem("Select All");
         editMenu.add(copyMenuItem);
         editMenu.add(pasteMenuItem);
         editMenu.add(cutMenuItem);
+        editMenu.add(selectMenuItem);
 
         JMenu viewMenu = new JMenu("View");
         JMenuItem searchMenuItem = new JMenuItem("Search");
@@ -146,6 +149,14 @@ public class TextEditor extends Component {
                     }
                 }
             }
+            });
+          
+        printMenuItem.addActionListener(evt -> {
+                    try {
+                        textArea.print();
+                    } catch (PrinterException exc){
+                    }
+
         });
 
         //function to search for a specific word
@@ -197,6 +208,10 @@ public class TextEditor extends Component {
                 int caretPosition = textArea.getCaretPosition();
                 textArea.insert(copiedText, caretPosition);
             }
+        });
+
+        selectMenuItem.addActionListener(evt -> {
+            textArea.selectAll();
         });
 
 
