@@ -1,0 +1,52 @@
+<METRICS profile="Complexity metrics" timestamp="Tue, 29 Aug 2023 22:23:11 NZST">
+	<METRIC category="Method" name="Cognitive complexity" abbreviation="CogC">
+		<VALUE measured="org.example.Main.main(String[])" value="0.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="84.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="0.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Essential cyclomatic complexity" abbreviation="ev(G)">
+		<VALUE measured="org.example.Main.main(String[])" value="1.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="7.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="1.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Design complexity" abbreviation="iv(G)">
+		<VALUE measured="org.example.Main.main(String[])" value="1.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="29.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="1.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Cyclomatic complexity" abbreviation="v(G)">
+		<VALUE measured="org.example.Main.main(String[])" value="1.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="31.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="1.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Average operation complexity" abbreviation="OCavg">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="13.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Maximum operation complexity" abbreviation="OCmax">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="25.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Weighted method complexity" abbreviation="WMC">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="26.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Average cyclomatic complexity" abbreviation="v(G)avg">
+		<VALUE measured="org.example" value="11.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Total cyclomatic complexity" abbreviation="v(G)tot">
+		<VALUE measured="org.example" value="33.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Average cyclomatic complexity" abbreviation="v(G)avg">
+		<VALUE measured="Assignment1_159251_2023" value="11.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Total cyclomatic complexity" abbreviation="v(G)tot">
+		<VALUE measured="Assignment1_159251_2023" value="33.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Average cyclomatic complexity" abbreviation="v(G)avg">
+		<VALUE measured="project" value="11.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Total cyclomatic complexity" abbreviation="v(G)tot">
+		<VALUE measured="project" value="33.0"/>
+	</METRIC>
+</METRICS>

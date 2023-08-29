@@ -1,0 +1,44 @@
+<METRICS profile="Class count metrics" timestamp="Tue, 29 Aug 2023 22:22:34 NZST">
+	<METRIC category="Package" name="Number of classes" abbreviation="C">
+		<VALUE measured="org.example" value="2.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Number of classes (recursive)" abbreviation="C(rec)">
+		<VALUE measured="" value="2.0"/>
+		<VALUE measured="org" value="2.0"/>
+		<VALUE measured="org.example" value="2.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Number of product classes" abbreviation="Cp">
+		<VALUE measured="org.example" value="2.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Number of product classes (recursive)" abbreviation="Cp(rec)">
+		<VALUE measured="" value="2.0"/>
+		<VALUE measured="org" value="2.0"/>
+		<VALUE measured="org.example" value="2.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Number of test classes" abbreviation="Ct">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Number of test classes (recursive)" abbreviation="TC(rec)">
+		<VALUE measured="" value="0.0"/>
+		<VALUE measured="org" value="0.0"/>
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Number of classes" abbreviation="C">
+		<VALUE measured="Assignment1_159251_2023" value="2.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Number of product classes" abbreviation="Cp">
+		<VALUE measured="Assignment1_159251_2023" value="2.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Number of test classes" abbreviation="Ct">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Number of classes" abbreviation="C">
+		<VALUE measured="project" value="2.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Number of product classes" abbreviation="Cp">
+		<VALUE measured="project" value="2.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Number of test classes" abbreviation="Ct">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+</METRICS>

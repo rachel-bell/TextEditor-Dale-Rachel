@@ -1,0 +1,180 @@
+<METRICS profile="Lines of code metrics" timestamp="Tue, 29 Aug 2023 22:24:43 NZST">
+	<METRIC category="Method" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="org.example.Main.main(String[])" value="0.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="15.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="0.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.example.Main.main(String[])" value="0.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="0.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="0.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="org.example.Main.main(String[])" value="3.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="234.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="5.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="org.example.Main.main(String[])" value="3.0"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="220.0"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="5.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Relative lines of code" abbreviation="RLOC">
+		<VALUE measured="org.example.Main.main(String[])" value="0.6"/>
+		<VALUE measured="org.example.TextEditor.TextEditor()" value="0.9669421487603306"/>
+		<VALUE measured="org.example.TextEditor.main(String[])" value="0.02066115702479339"/>
+	</METRIC>
+	<METRIC category="Class" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="org.example.Main" value="0.0"/>
+		<VALUE measured="org.example.TextEditor" value="15.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.example.Main" value="0.0"/>
+		<VALUE measured="org.example.TextEditor" value="0.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="org.example.Main" value="5.0"/>
+		<VALUE measured="org.example.TextEditor" value="242.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Comment lines of code (recursive)" abbreviation="CLOC(rec)">
+		<VALUE measured="" value="15.0"/>
+		<VALUE measured="org" value="15.0"/>
+		<VALUE measured="org.example" value="15.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Javadoc lines of code (recursive)" abbreviation="JLOC(rec)">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="org.example" value="274.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of code (recursive)" abbreviation="LOC(rec)">
+		<VALUE measured="" value="274.0"/>
+		<VALUE measured="org" value="274.0"/>
+		<VALUE measured="org.example" value="274.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="org.example" value="274.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of product code (recursive)" abbreviation="LOCp(rec)">
+		<VALUE measured="" value="274.0"/>
+		<VALUE measured="org" value="274.0"/>
+		<VALUE measured="org.example" value="274.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of test code (recursive)" abbreviation="LOCt(rec)">
+		<VALUE measured="" value="0.0"/>
+		<VALUE measured="org" value="0.0"/>
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="org.example" value="260.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="org.example" value="260.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (product, recursive)" abbreviation="NCLOCp(rec)">
+		<VALUE measured="" value="260.0"/>
+		<VALUE measured="org" value="260.0"/>
+		<VALUE measured="org.example" value="260.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="org.example" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Groovy" abbreviation="L(Groovy)">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of HTML" abbreviation="L(HTML)">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Java" abbreviation="L(J)">
+		<VALUE measured="Assignment1_159251_2023" value="274.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Kotlin" abbreviation="L(KT)">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of XML" abbreviation="L(XML)">
+		<VALUE measured="Assignment1_159251_2023" value="49.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="Assignment1_159251_2023" value="404.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="Assignment1_159251_2023" value="274.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="Assignment1_159251_2023" value="390.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="Assignment1_159251_2023" value="260.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="Assignment1_159251_2023" value="0.0"/>
+	</METRIC>
+	<METRIC category="FileType" name="Lines of code" abbreviation="LOC">
+		<VALUE measured=".gitignore (GitIgnore)" value="33.0"/>
+		<VALUE measured="Java" value="274.0"/>
+		<VALUE measured="Markdown" value="29.0"/>
+		<VALUE measured="XML" value="49.0"/>
+		<VALUE measured="YAML" value="19.0"/>
+	</METRIC>
+	<METRIC category="FileType" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured=".gitignore (GitIgnore)" value="33.0"/>
+		<VALUE measured="Java" value="260.0"/>
+		<VALUE measured="Markdown" value="29.0"/>
+		<VALUE measured="XML" value="49.0"/>
+		<VALUE measured="YAML" value="19.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="project" value="15.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Groovy" abbreviation="L(Groovy)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of HTML" abbreviation="L(HTML)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Java" abbreviation="L(J)">
+		<VALUE measured="project" value="274.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Kotlin" abbreviation="L(KT)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of XML" abbreviation="L(XML)">
+		<VALUE measured="project" value="49.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="project" value="404.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="project" value="274.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="project" value="390.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="project" value="260.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+</METRICS>

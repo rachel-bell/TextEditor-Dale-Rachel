@@ -1,0 +1,26 @@
+<METRICS profile="Chidamber-Kemerer metrics" timestamp="Tue, 29 Aug 2023 22:21:09 NZST">
+	<METRIC category="Class" name="Coupling between objects" abbreviation="CBO">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="1.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Depth of inheritance tree" abbreviation="DIT">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="2.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Lack of Cohesion of Methods" abbreviation="LCOM">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="1.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Number of children" abbreviation="NOC">
+		<VALUE measured="org.example.Main" value="0.0"/>
+		<VALUE measured="org.example.TextEditor" value="0.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Response for class" abbreviation="RFC">
+		<VALUE measured="org.example.Main" value="2.0"/>
+		<VALUE measured="org.example.TextEditor" value="95.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Weighted method complexity" abbreviation="WMC">
+		<VALUE measured="org.example.Main" value="1.0"/>
+		<VALUE measured="org.example.TextEditor" value="26.0"/>
+	</METRIC>
+</METRICS>
