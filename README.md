@@ -10,7 +10,7 @@ If you want to save as a PDF file then choose save as pdf in the file menu
 When opening source code, you have to resive and try to move the scroll to remove the blank frame above  
 
 ---
-###Commits for each member:
+### Commits for each member:
 
 Rachel:
 
