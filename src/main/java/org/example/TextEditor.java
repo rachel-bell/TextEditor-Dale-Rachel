@@ -5,7 +5,6 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.odftoolkit.simple.TextDocument;
 import org.odftoolkit.simple.text.Paragraph;
 
@@ -23,10 +22,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import static java.lang.System.in;
-import static org.apache.pdfbox.pdmodel.font.PDType1Font.*;
-import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.HELVETICA;
-import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.TIMES_ROMAN;
-
 public class TextEditor extends Component {
     private String copiedText;
     public TextEditor() {
@@ -139,15 +134,17 @@ public class TextEditor extends Component {
         saveMenuItem.addActionListener(evt -> {
             JFileChooser fileChooser = new JFileChooser();
             FileNameExtensionFilter txtFile = new FileNameExtensionFilter("Text Files (.txt)", "txt");
-            FileNameExtensionFilter pdfFile = new FileNameExtensionFilter("PDF Files (.pdf)","pdf");
+            FileNameExtensionFilter pdfFile = new FileNameExtensionFilter("PDF Files (.pdf)", "pdf");
             fileChooser.addChoosableFileFilter(txtFile);
             fileChooser.addChoosableFileFilter(pdfFile);
 
             int retVal = fileChooser.showSaveDialog(frame);
             if (retVal == JFileChooser.APPROVE_OPTION) {
-                // Create a bufferedwriter with the specified file
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile()))) {
-                    if (fileChooser.getFileFilter().equals(pdfFile)) {
+                File selectedFile = fileChooser.getSelectedFile();
+                String selectedExtension = fileChooser.getFileFilter().getDescription();
+
+                try {
+                    if (selectedExtension.equals("PDF Files (.pdf)")) {
                         PDDocument doc = new PDDocument();
                         PDPage page = new PDPage();
                         doc.addPage(page);
@@ -158,31 +155,36 @@ public class TextEditor extends Component {
                         while (scanner.hasNextLine()) {
                             String text = scanner.nextLine();
                             contentStream.beginText();
-                            contentStream.newLine();
-                            //contentStream.setFont(PDType1Font.HELVETICA,16);
+                            contentStream.setFont(PDType1Font.HELVETICA, 16);
+                            contentStream.newLineAtOffset(50, page.getMediaBox().getHeight() - 50); // Position at the top
                             contentStream.showText(text);
                             contentStream.endText();
                         }
                         scanner.close();
                         contentStream.close();
-                        doc.save(new File(fileChooser.getSelectedFile().getAbsolutePath() + ".pdf"));
+
+                        // Append .pdf extension if not already present
+                        String pdfFilePath = selectedFile.getAbsolutePath() + (selectedFile.getName().endsWith(".pdf") ? "" : ".pdf");
+
+                        doc.save(new File(pdfFilePath));
                         doc.close();
-                    }
-                    else {
+                    } else if (selectedExtension.equals("Text Files (.txt)")) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
+
                         Scanner scanner = new Scanner(textArea.getText());
                         while (scanner.hasNextLine()) {
                             String line = scanner.nextLine();
                             writer.write(line + "\n");
                         }
                         scanner.close();
+                        writer.close();
                     }
-                    // Write the content to the file
-
                 } catch (IOException e1) {
                     e1.printStackTrace();
-                          }
+                }
             }
         });
+
 
         exitMenuItem.addActionListener(evt -> {
             if (!textArea.getText().isEmpty()) {
