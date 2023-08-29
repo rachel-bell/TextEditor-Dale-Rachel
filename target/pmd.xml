@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.55.0" timestamp="2023-08-29T22:37:15.766">
+<file name="/Users/rachelbell/Documents/GitHub/251-Assignment1-2023-Dale-Rachel/src/main/java/org/example/Main.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="21" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="Main" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.swing.*'
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="18" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="Main" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.awt.*'
+</violation>
+<violation beginline="8" endline="8" begincolumn="20" endcolumn="26" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.example" class="Main" method="main" variable="textGUI" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'textGUI'.
+</violation>
+</file>
+<file name="/Users/rachelbell/Documents/GitHub/251-Assignment1-2023-Dale-Rachel/src/main/java/org/example/TextEditor.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="TextEditor" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.apache.pdfbox.pdmodel.font.PDFont'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="TextEditor" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.fife.ui.rtextarea.RTextScrollPane'
+</violation>
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="25" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="TextEditor" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Scanner'
+</violation>
+<violation beginline="27" endline="27" begincolumn="1" endcolumn="34" rule="UnnecessaryImport" ruleset="Code Style" package="org.example" class="TextEditor" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.lang.System.in'
+</violation>
+<violation beginline="91" endline="91" begincolumn="24" endcolumn="30" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.example" class="TextEditor" method="TextEditor" variable="newText" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'newText'.
+</violation>
+<violation beginline="224" endline="225" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.example" class="TextEditor" method="TextEditor" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>
