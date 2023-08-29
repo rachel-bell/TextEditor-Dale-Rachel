@@ -7,6 +7,9 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.odftoolkit.simple.TextDocument;
 import org.odftoolkit.simple.text.Paragraph;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -89,17 +92,22 @@ public class TextEditor extends Component {
         });
 
         openMenuItem.addActionListener(evt -> {
-            //Create file chooser with and only allow users to open .txt files
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-            fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt", "odt", "rft", "java", "cpp", "py"));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt", "odt", "java", "cpp", "py"));
             int result = fileChooser.showOpenDialog(this);
-            //If you select a valid .txt file then try to open it
+
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                //If the file is a odt file use TextDocument to open it
-                if (selectedFile.getName().contains("odt")) {
-                    try {
+                String fileName = selectedFile.getName().toLowerCase();
+
+                try (BufferedReader buff = new BufferedReader(new FileReader(selectedFile))) {
+                    RSyntaxTextArea syntaxTextArea = new RSyntaxTextArea();
+                    String syntaxStyle = null;
+
+                    if (fileName.endsWith(".txt")) {
+                        textArea.read(new FileReader(selectedFile), null);
+                    } else if (fileName.endsWith(".odt")) {
                         TextDocument odtDoc = TextDocument.loadDocument(selectedFile);
                         StringBuilder content = new StringBuilder();
                         for (Iterator<Paragraph> it = odtDoc.getParagraphIterator(); it.hasNext(); ) {
@@ -107,29 +115,31 @@ public class TextEditor extends Component {
                             content.append(paragraph.getTextContent()).append("\n");
                         }
                         textArea.setText(content.toString());
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                    } else if (fileName.endsWith(".java")) {
+                        syntaxStyle = SyntaxConstants.SYNTAX_STYLE_JAVA;
+                    } else if (fileName.endsWith(".cpp")) {
+                        syntaxStyle = SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS;
+                    } else if (fileName.endsWith(".py")) {
+                        syntaxStyle = SyntaxConstants.SYNTAX_STYLE_PYTHON;
+                    } else {
+                        // Unsupported file type
+                        return;
                     }
-                    //If the file is a txt file use a buffer and fileReader to open it
-                } else {
-                    BufferedReader buff = null;
-                    try {
-                        buff = new BufferedReader(new FileReader(selectedFile));
-                        String str;
-                        textArea.setText("");
-                        while ((str = buff.readLine()) != null) {
-                            textArea.append(str + "\n");
-                        }
-                    } catch (IOException e) {
-                    } finally {
-                        try {
-                            in.close();
-                        } catch (Exception ex) {
-                        }
+
+                    if (syntaxStyle != null) {
+                        syntaxTextArea.setSyntaxEditingStyle(syntaxStyle);
+                        syntaxTextArea.read(buff, null);
+
+                        JScrollPane syntaxScrollPane = new JScrollPane(syntaxTextArea);
+                        frame.remove(scrollPane);
+                        frame.add(syntaxScrollPane, BorderLayout.CENTER);
+                        frame.revalidate();
+                        frame.repaint();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-
         });
 
 
@@ -276,7 +286,8 @@ public class TextEditor extends Component {
         timeMenuItem.addActionListener(evt -> {
             SimpleDateFormat formatter = new SimpleDateFormat("hh:mm dd-MM-yyyy");
             String strDate = formatter.format(new Date());
-            textArea.setText(strDate + "\n");
+            String currentText = textArea.getText();
+            textArea.setText(strDate + "\n" + currentText);
         });
 
         //function to display the developers names and a little message in a pop-up box
