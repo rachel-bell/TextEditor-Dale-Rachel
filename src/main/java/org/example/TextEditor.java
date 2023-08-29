@@ -92,7 +92,7 @@ public class TextEditor extends Component {
             //Create file chooser with and only allow users to open .txt files
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-            fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files and OpenDocument Text Files", "txt", "odt"));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt", "odt", "rft", "java", "cpp", "py"));
             int result = fileChooser.showOpenDialog(this);
             //If you select a valid .txt file then try to open it
             if (result == JFileChooser.APPROVE_OPTION) {
