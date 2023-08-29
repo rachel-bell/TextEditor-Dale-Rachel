@@ -93,8 +93,11 @@ public class TextEditor extends Component {
 
         openMenuItem.addActionListener(evt -> {
             JFileChooser fileChooser = new JFileChooser();
+
+            // Set the default directory to the user's home directory
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
             fileChooser.setFileFilter(new FileNameExtensionFilter("Text Files", "txt", "odt", "java", "cpp", "py"));
+            // Show the open dialog and wait for user input
             int result = fileChooser.showOpenDialog(this);
 
             if (result == JFileChooser.APPROVE_OPTION) {
@@ -102,6 +105,7 @@ public class TextEditor extends Component {
                 String fileName = selectedFile.getName().toLowerCase();
 
                 try (BufferedReader buff = new BufferedReader(new FileReader(selectedFile))) {
+                    // Create a text area for syntax highlighting
                     RSyntaxTextArea syntaxTextArea = new RSyntaxTextArea();
                     String syntaxStyle = null;
 
@@ -127,10 +131,12 @@ public class TextEditor extends Component {
                     }
 
                     if (syntaxStyle != null) {
+                        // Apply syntax highlighting style and load code into the syntax text area
                         syntaxTextArea.setSyntaxEditingStyle(syntaxStyle);
                         syntaxTextArea.read(buff, null);
 
                         JScrollPane syntaxScrollPane = new JScrollPane(syntaxTextArea);
+                        // Remove the previous scroll pane from the frame and add the syntax scroll pane
                         frame.remove(scrollPane);
                         frame.add(syntaxScrollPane, BorderLayout.CENTER);
                         frame.revalidate();
@@ -148,9 +154,11 @@ public class TextEditor extends Component {
             if (fileChooser.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
                 if (!file.getName().endsWith(".txt")) {
+                    // Ensure the file has the ".txt" extension
                     file = new File(file.getAbsolutePath() + ".txt");
                 }
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                     // Write the content of the text area to the selected file
                     textArea.write(writer);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(frame, "An error occurred while saving the file.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -169,6 +177,7 @@ public class TextEditor extends Component {
                     PDPage page = new PDPage();
                     document.addPage(page);
 
+                    // Set up the content stream for adding text
                     PDPageContentStream contentStream = new PDPageContentStream(document, page);
                     contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
                     contentStream.beginText();
@@ -179,7 +188,7 @@ public class TextEditor extends Component {
                         contentStream.showText(line);
                         contentStream.newLineAtOffset(0, -15);
                     }
-
+                    // closing content stream
                     contentStream.endText();
                     contentStream.close();
 
@@ -192,6 +201,7 @@ public class TextEditor extends Component {
 
 
         exitMenuItem.addActionListener(evt -> {
+            //checks if the text area is empty
             if (!textArea.getText().isEmpty()) {
                 int asking = JOptionPane.showConfirmDialog(this,
                         "Do you want to save your files before exiting this tab?");
@@ -200,6 +210,7 @@ public class TextEditor extends Component {
                 } else {
                     int asking2 = JOptionPane.showConfirmDialog(this, "Are you sure?");
                     if (asking2 == JOptionPane.YES_OPTION) {
+                        // if yes then all tabs get closed
                         System.exit(0);
                     }
                 }
@@ -230,7 +241,7 @@ public class TextEditor extends Component {
         searchMenuItem.addActionListener(evt -> {
             String[] options = {"Search", "Remove Highlights"};
             String choice = (String) JOptionPane.showInputDialog(null, "Choose an option:", "Search and Highlight", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-
+            // Get the highlighter for the text area
             Highlighter highlighter = textArea.getHighlighter();
 
             if (choice != null) {
@@ -239,10 +250,12 @@ public class TextEditor extends Component {
                     String searchWord = JOptionPane.showInputDialog(null, message);
 
                     String content = textArea.getText();
+                    // Clear any existing highlights
                     highlighter.removeAllHighlights();
 
                     if (searchWord != null && !searchWord.isEmpty()) {
                         int i = 0;
+                        // Search for the search word in the content
                         while ((i = content.toLowerCase().indexOf(searchWord.toLowerCase(), i)) >= 0) {
                             int totalLength = i + searchWord.length();
                             try {
