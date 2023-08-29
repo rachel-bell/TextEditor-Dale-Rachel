@@ -46,11 +46,13 @@ public class TextEditor extends Component {
         JMenuItem newMenuItem = new JMenuItem("New");
         JMenuItem openMenuItem = new JMenuItem("Open");
         JMenuItem saveMenuItem = new JMenuItem("Save");
+        JMenuItem savePDFMenuItem = new JMenuItem("Save as PDF");
         JMenuItem printMenuItem = new JMenuItem("Print");
         JMenuItem exitMenuItem = new JMenuItem("Exit");
         fileMenu.add(newMenuItem);
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);
+        fileMenu.add(savePDFMenuItem);
         fileMenu.add(printMenuItem);
         fileMenu.addSeparator();
         fileMenu.add(exitMenuItem);
@@ -108,7 +110,7 @@ public class TextEditor extends Component {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                //If the file is a txt file use a buffer and fileReader to open it
+                    //If the file is a txt file use a buffer and fileReader to open it
                 } else {
                     BufferedReader buff = null;
                     try {
@@ -133,54 +135,47 @@ public class TextEditor extends Component {
 
         saveMenuItem.addActionListener(evt -> {
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter txtFile = new FileNameExtensionFilter("Text Files (.txt)", "txt");
-            FileNameExtensionFilter pdfFile = new FileNameExtensionFilter("PDF Files (.pdf)", "pdf");
-            fileChooser.addChoosableFileFilter(txtFile);
-            fileChooser.addChoosableFileFilter(pdfFile);
+            if (fileChooser.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                if (!file.getName().endsWith(".txt")) {
+                    file = new File(file.getAbsolutePath() + ".txt");
+                }
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    textArea.write(writer);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(frame, "An error occurred while saving the file.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
 
-            int retVal = fileChooser.showSaveDialog(frame);
-            if (retVal == JFileChooser.APPROVE_OPTION) {
-                File selectedFile = fileChooser.getSelectedFile();
-                String selectedExtension = fileChooser.getFileFilter().getDescription();
+        savePDFMenuItem.addActionListener(evt -> {
+            JFileChooser fileChooser = new JFileChooser();
+            if (fileChooser.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                if (!file.getName().endsWith(".pdf")) {
+                    file = new File(file.getAbsolutePath() + ".pdf");
+                }
+                try (PDDocument document = new PDDocument()) {
+                    PDPage page = new PDPage();
+                    document.addPage(page);
 
-                try {
-                    if (selectedExtension.equals("PDF Files (.pdf)")) {
-                        PDDocument doc = new PDDocument();
-                        PDPage page = new PDPage();
-                        doc.addPage(page);
-                        PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+                    PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                    contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+                    contentStream.beginText();
+                    contentStream.newLineAtOffset(50, 750);
 
-                        Scanner scanner = new Scanner(textArea.getText());
-
-                        while (scanner.hasNextLine()) {
-                            String text = scanner.nextLine();
-                            contentStream.beginText();
-                            contentStream.setFont(PDType1Font.HELVETICA, 16);
-                            contentStream.newLineAtOffset(50, page.getMediaBox().getHeight() - 50); // Position at the top
-                            contentStream.showText(text);
-                            contentStream.endText();
-                        }
-                        scanner.close();
-                        contentStream.close();
-
-                        // Append .pdf extension if not already present
-                        String pdfFilePath = selectedFile.getAbsolutePath() + (selectedFile.getName().endsWith(".pdf") ? "" : ".pdf");
-
-                        doc.save(new File(pdfFilePath));
-                        doc.close();
-                    } else if (selectedExtension.equals("Text Files (.txt)")) {
-                        BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
-
-                        Scanner scanner = new Scanner(textArea.getText());
-                        while (scanner.hasNextLine()) {
-                            String line = scanner.nextLine();
-                            writer.write(line + "\n");
-                        }
-                        scanner.close();
-                        writer.close();
+                    String[] lines = textArea.getText().split("\n");
+                    for (String line : lines) {
+                        contentStream.showText(line);
+                        contentStream.newLineAtOffset(0, -15);
                     }
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+
+                    contentStream.endText();
+                    contentStream.close();
+
+                    document.save(file);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(frame, "An error occurred while saving the file.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -211,13 +206,13 @@ public class TextEditor extends Component {
                     }
                 }
             }
-            });
-          
+        });
+
         printMenuItem.addActionListener(evt -> {
-                    try {
-                        textArea.print();
-                    } catch (PrinterException exc){
-                    }
+            try {
+                textArea.print();
+            } catch (PrinterException exc){
+            }
 
         });
 
